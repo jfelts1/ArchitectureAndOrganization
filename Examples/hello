@@ -1,0 +1,33 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x1151a30 .scope module, "main" "main" 2 9;
+ .timescale 0 0;
+v0x1184930_0 .net "nandout", 0 0, L_0x1184c90; 1 drivers
+v0x1184a00_0 .var "x", 0 0;
+v0x1184ab0_0 .var "y", 0 0;
+S_0x1175d40 .scope module, "myand" "andgate" 2 13, 2 25, S_0x1151a30;
+ .timescale 0 0;
+L_0x1184b60 .functor AND 1, v0x1184a00_0, v0x1184ab0_0, C4<1>, C4<1>;
+L_0x1184c90 .functor NOT 1, L_0x1184b60, C4<0>, C4<0>, C4<0>;
+v0x1151e50_0 .net "a", 0 0, v0x1184a00_0; 1 drivers
+v0x1184740_0 .net "b", 0 0, v0x1184ab0_0; 1 drivers
+v0x11847e0_0 .alias "out", 0 0, v0x1184930_0;
+v0x1184880_0 .net "w0", 0 0, L_0x1184b60; 1 drivers
+    .scope S_0x1151a30;
+T_0 ;
+    %set/v v0x1184a00_0, 1, 1;
+    %set/v v0x1184ab0_0, 1, 1;
+    %delay 1, 0;
+    %vpi_call 2 20 "$display", "x=%b NAND y=%b out=%b", v0x1184a00_0, v0x1184ab0_0, v0x1184930_0;
+    %vpi_call 2 21 "$finish";
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "hello.v";

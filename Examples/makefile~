@@ -1,0 +1,3 @@
+files = hello.v
+Assign1 : $(files)
+    iverilog $(files)

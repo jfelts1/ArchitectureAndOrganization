@@ -1,0 +1,215 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x19ad420 .scope module, "main" "main" 2 1;
+ .timescale 0 0;
+v0x19e5240_0 .var "A", 0 0;
+v0x19e52f0_0 .net "A0", 0 0, L_0x19e6200; 1 drivers
+v0x19e5370_0 .var "B", 0 0;
+v0x19e53f0_0 .net "N0", 0 0, L_0x19e64e0; 1 drivers
+v0x19e54f0_0 .net "O0", 0 0, L_0x19e6300; 1 drivers
+v0x19e55c0_0 .net "X0", 0 0, L_0x19e6360; 1 drivers
+v0x19e5690_0 .net "and0", 0 0, L_0x19e5db0; 1 drivers
+v0x19e5760_0 .var "i", 3 0;
+v0x19e5830_0 .var "i0", 0 0;
+v0x19e58b0_0 .var "i1", 0 0;
+v0x19e5990_0 .net "not0", 0 0, L_0x19e61a0; 1 drivers
+v0x19e5a10_0 .net "oput", 0 0, L_0x19e6c40; 1 drivers
+v0x19e5a90_0 .net "or0", 0 0, L_0x19e5f10; 1 drivers
+v0x19e5b60_0 .net "xor0", 0 0, L_0x19e60b0; 1 drivers
+S_0x19e4b20 .scope module, "decoder" "Decoder" 2 6, 2 71, S_0x19ad420;
+ .timescale 0 0;
+L_0x19e5930 .functor NOT 1, v0x19e5240_0, C4<0>, C4<0>, C4<0>;
+L_0x19e5d00 .functor NOT 1, v0x19e5370_0, C4<0>, C4<0>, C4<0>;
+L_0x19e5db0 .functor AND 1, L_0x19e5930, L_0x19e5d00, C4<1>, C4<1>;
+L_0x19e5eb0 .functor NOT 1, v0x19e5240_0, C4<0>, C4<0>, C4<0>;
+L_0x19e5f10 .functor AND 1, L_0x19e5eb0, v0x19e5370_0, C4<1>, C4<1>;
+L_0x19e5fc0 .functor NOT 1, v0x19e5370_0, C4<0>, C4<0>, C4<0>;
+L_0x19e60b0 .functor AND 1, v0x19e5240_0, L_0x19e5fc0, C4<1>, C4<1>;
+L_0x19e61a0 .functor AND 1, v0x19e5240_0, v0x19e5370_0, C4<1>, C4<1>;
+v0x19e4c10_0 .net "A", 0 0, v0x19e5240_0; 1 drivers
+v0x19e4c90_0 .net "B", 0 0, v0x19e5370_0; 1 drivers
+v0x19e4d10_0 .net *"_s0", 0 0, L_0x19e5930; 1 drivers
+v0x19e4db0_0 .net *"_s10", 0 0, L_0x19e5fc0; 1 drivers
+v0x19e4e30_0 .net *"_s2", 0 0, L_0x19e5d00; 1 drivers
+v0x19e4ed0_0 .net *"_s6", 0 0, L_0x19e5eb0; 1 drivers
+v0x19e4fb0_0 .alias "and0", 0 0, v0x19e5690_0;
+v0x19e5030_0 .alias "not0", 0 0, v0x19e5990_0;
+v0x19e50e0_0 .alias "or0", 0 0, v0x19e5a90_0;
+v0x19e5190_0 .alias "xor0", 0 0, v0x19e5b60_0;
+S_0x19e4650 .scope module, "comp" "Comp" 2 7, 2 80, S_0x19ad420;
+ .timescale 0 0;
+L_0x19e6200 .functor AND 1, v0x19e5830_0, v0x19e58b0_0, C4<1>, C4<1>;
+L_0x19e6300 .functor OR 1, v0x19e5830_0, v0x19e58b0_0, C4<0>, C4<0>;
+L_0x19e6360 .functor XOR 1, v0x19e5830_0, v0x19e58b0_0, C4<0>, C4<0>;
+L_0x19e64e0 .functor NOT 1, v0x19e5830_0, C4<0>, C4<0>, C4<0>;
+v0x19e4740_0 .alias "A0", 0 0, v0x19e52f0_0;
+v0x19e47e0_0 .alias "N0", 0 0, v0x19e53f0_0;
+v0x19e4890_0 .alias "O0", 0 0, v0x19e54f0_0;
+v0x19e4940_0 .alias "X0", 0 0, v0x19e55c0_0;
+v0x19e4a20_0 .net "i0", 0 0, v0x19e5830_0; 1 drivers
+v0x19e4aa0_0 .net "i1", 0 0, v0x19e58b0_0; 1 drivers
+S_0x19ade30 .scope module, "output0" "Output" 2 8, 2 89, S_0x19ad420;
+ .timescale 0 0;
+L_0x19e6560 .functor AND 1, L_0x19e6200, L_0x19e5db0, C4<1>, C4<1>;
+L_0x19e66e0 .functor AND 1, L_0x19e6300, L_0x19e5f10, C4<1>, C4<1>;
+L_0x19e6880 .functor AND 1, L_0x19e6360, L_0x19e60b0, C4<1>, C4<1>;
+L_0x19e6a00 .functor AND 1, L_0x19e64e0, L_0x19e61a0, C4<1>, C4<1>;
+L_0x19e6b80 .functor OR 1, L_0x19e6560, L_0x19e66e0, C4<0>, C4<0>;
+L_0x19e6be0 .functor OR 1, L_0x19e6b80, L_0x19e6880, C4<0>, C4<0>;
+L_0x19e6c40 .functor OR 1, L_0x19e6be0, L_0x19e6a00, C4<0>, C4<0>;
+v0x19ace70_0 .alias "A0", 0 0, v0x19e52f0_0;
+v0x19e3ba0_0 .alias "N0", 0 0, v0x19e53f0_0;
+v0x19e3c40_0 .alias "O0", 0 0, v0x19e54f0_0;
+v0x19e3ce0_0 .alias "X0", 0 0, v0x19e55c0_0;
+v0x19e3d90_0 .net *"_s10", 0 0, L_0x19e6be0; 1 drivers
+v0x19e3e30_0 .net *"_s8", 0 0, L_0x19e6b80; 1 drivers
+v0x19e3f10_0 .alias "and0", 0 0, v0x19e5690_0;
+v0x19e3fb0_0 .alias "not0", 0 0, v0x19e5990_0;
+v0x19e40a0_0 .alias "oput", 0 0, v0x19e5a10_0;
+v0x19e4140_0 .alias "or0", 0 0, v0x19e5a90_0;
+v0x19e4240_0 .net "w0", 0 0, L_0x19e6560; 1 drivers
+v0x19e42e0_0 .net "w1", 0 0, L_0x19e66e0; 1 drivers
+v0x19e43f0_0 .net "w2", 0 0, L_0x19e6880; 1 drivers
+v0x19e4490_0 .net "w3", 0 0, L_0x19e6a00; 1 drivers
+v0x19e45b0_0 .alias "xor0", 0 0, v0x19e5b60_0;
+    .scope S_0x19ad420;
+T_0 ;
+    %set/v v0x19e5240_0, 0, 1;
+    %set/v v0x19e5370_0, 0, 1;
+    %vpi_call 2 15 "$display", "AND TESTS\012A=%b B=%b", v0x19e5240_0, v0x19e5370_0;
+    %delay 1, 0;
+    %vpi_call 2 17 "$display", "DECODER TEST\012and0=%b or0=%b xor0=%b not0=%b\012", v0x19e5690_0, v0x19e5a90_0, v0x19e5b60_0, v0x19e5990_0;
+    %set/v v0x19e5760_0, 0, 4;
+T_0.0 ;
+    %load/v 8, v0x19e5760_0, 4;
+    %mov 12, 0, 1;
+   %cmpi/u 8, 4, 5;
+    %jmp/0xz T_0.1, 5;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_0.2, 4;
+    %load/x1p 8, v0x19e5760_0, 1;
+    %jmp T_0.3;
+T_0.2 ;
+    %mov 8, 2, 1;
+T_0.3 ;
+; Save base=8 wid=1 in lookaside.
+    %set/v v0x19e5830_0, 8, 1;
+    %load/v 8, v0x19e5760_0, 1; Only need 1 of 4 bits
+; Save base=8 wid=1 in lookaside.
+    %set/v v0x19e58b0_0, 8, 1;
+    %delay 1, 0;
+    %vpi_call 2 22 "$display", "i0=%b i1=%b\012A0=%b O0=%b X0=%b N0=%b oput=%b\012", v0x19e5830_0, v0x19e58b0_0, v0x19e52f0_0, v0x19e54f0_0, v0x19e55c0_0, v0x19e53f0_0, v0x19e5a10_0;
+    %load/v 8, v0x19e5760_0, 4;
+    %mov 12, 0, 28;
+    %addi 8, 1, 32;
+    %set/v v0x19e5760_0, 8, 4;
+    %jmp T_0.0;
+T_0.1 ;
+    %set/v v0x19e5240_0, 0, 1;
+    %set/v v0x19e5370_0, 1, 1;
+    %vpi_call 2 29 "$display", "OR TESTS\012A=%b B=%b", v0x19e5240_0, v0x19e5370_0;
+    %delay 1, 0;
+    %vpi_call 2 31 "$display", "DECODER TEST\012and0=%b or0=%b xor0=%b not0=%b\012", v0x19e5690_0, v0x19e5a90_0, v0x19e5b60_0, v0x19e5990_0;
+    %set/v v0x19e5760_0, 0, 4;
+T_0.4 ;
+    %load/v 8, v0x19e5760_0, 4;
+    %mov 12, 0, 1;
+   %cmpi/u 8, 4, 5;
+    %jmp/0xz T_0.5, 5;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_0.6, 4;
+    %load/x1p 8, v0x19e5760_0, 1;
+    %jmp T_0.7;
+T_0.6 ;
+    %mov 8, 2, 1;
+T_0.7 ;
+; Save base=8 wid=1 in lookaside.
+    %set/v v0x19e5830_0, 8, 1;
+    %load/v 8, v0x19e5760_0, 1; Only need 1 of 4 bits
+; Save base=8 wid=1 in lookaside.
+    %set/v v0x19e58b0_0, 8, 1;
+    %delay 1, 0;
+    %vpi_call 2 36 "$display", "i0=%b i1=%b\012A0=%b O0=%b X0=%b N0=%b oput=%b\012", v0x19e5830_0, v0x19e58b0_0, v0x19e52f0_0, v0x19e54f0_0, v0x19e55c0_0, v0x19e53f0_0, v0x19e5a10_0;
+    %load/v 8, v0x19e5760_0, 4;
+    %mov 12, 0, 28;
+    %addi 8, 1, 32;
+    %set/v v0x19e5760_0, 8, 4;
+    %jmp T_0.4;
+T_0.5 ;
+    %set/v v0x19e5240_0, 1, 1;
+    %set/v v0x19e5370_0, 0, 1;
+    %vpi_call 2 43 "$display", "XOR TESTS\012A=%b B=%b", v0x19e5240_0, v0x19e5370_0;
+    %delay 1, 0;
+    %vpi_call 2 45 "$display", "DECODER TEST\012and0=%b or0=%b xor0=%b not0=%b\012", v0x19e5690_0, v0x19e5a90_0, v0x19e5b60_0, v0x19e5990_0;
+    %set/v v0x19e5760_0, 0, 4;
+T_0.8 ;
+    %load/v 8, v0x19e5760_0, 4;
+    %mov 12, 0, 1;
+   %cmpi/u 8, 4, 5;
+    %jmp/0xz T_0.9, 5;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_0.10, 4;
+    %load/x1p 8, v0x19e5760_0, 1;
+    %jmp T_0.11;
+T_0.10 ;
+    %mov 8, 2, 1;
+T_0.11 ;
+; Save base=8 wid=1 in lookaside.
+    %set/v v0x19e5830_0, 8, 1;
+    %load/v 8, v0x19e5760_0, 1; Only need 1 of 4 bits
+; Save base=8 wid=1 in lookaside.
+    %set/v v0x19e58b0_0, 8, 1;
+    %delay 1, 0;
+    %vpi_call 2 50 "$display", "i0=%b i1=%b\012A0=%b O0=%b X0=%b N0=%b oput=%b\012", v0x19e5830_0, v0x19e58b0_0, v0x19e52f0_0, v0x19e54f0_0, v0x19e55c0_0, v0x19e53f0_0, v0x19e5a10_0;
+    %load/v 8, v0x19e5760_0, 4;
+    %mov 12, 0, 28;
+    %addi 8, 1, 32;
+    %set/v v0x19e5760_0, 8, 4;
+    %jmp T_0.8;
+T_0.9 ;
+    %set/v v0x19e5240_0, 1, 1;
+    %set/v v0x19e5370_0, 1, 1;
+    %vpi_call 2 57 "$display", "NOT TESTS\012A=%b B=%b", v0x19e5240_0, v0x19e5370_0;
+    %delay 1, 0;
+    %vpi_call 2 59 "$display", "DECODER TEST\012and0=%b or0=%b xor0=%b not0=%b\012", v0x19e5690_0, v0x19e5a90_0, v0x19e5b60_0, v0x19e5990_0;
+    %set/v v0x19e5760_0, 0, 4;
+T_0.12 ;
+    %load/v 8, v0x19e5760_0, 4;
+    %mov 12, 0, 1;
+   %cmpi/u 8, 4, 5;
+    %jmp/0xz T_0.13, 5;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_0.14, 4;
+    %load/x1p 8, v0x19e5760_0, 1;
+    %jmp T_0.15;
+T_0.14 ;
+    %mov 8, 2, 1;
+T_0.15 ;
+; Save base=8 wid=1 in lookaside.
+    %set/v v0x19e5830_0, 8, 1;
+    %load/v 8, v0x19e5760_0, 1; Only need 1 of 4 bits
+; Save base=8 wid=1 in lookaside.
+    %set/v v0x19e58b0_0, 8, 1;
+    %delay 1, 0;
+    %vpi_call 2 64 "$display", "i0=%b i1=%b\012A0=%b O0=%b X0=%b N0=%b oput=%b\012", v0x19e5830_0, v0x19e58b0_0, v0x19e52f0_0, v0x19e54f0_0, v0x19e55c0_0, v0x19e53f0_0, v0x19e5a10_0;
+    %load/v 8, v0x19e5760_0, 4;
+    %mov 12, 0, 28;
+    %addi 8, 1, 32;
+    %set/v v0x19e5760_0, 8, 4;
+    %jmp T_0.12;
+T_0.13 ;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "assign1.v";
